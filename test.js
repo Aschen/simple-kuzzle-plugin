@@ -13,6 +13,7 @@ kuzzle.on('networkError', error => {
 
   try {
     await kuzzle.connect()
+
     const request = {
       controller: 'simple-plugin/marvelController',
       action: 'createHero'
@@ -20,7 +21,7 @@ kuzzle.on('networkError', error => {
 
     const response = await kuzzle.query(request);
 
-    console.log(response);
+    console.log(JSON.stringify(response, null, 2));
   } catch (error) {
     console.error(error.message);
   } finally {
